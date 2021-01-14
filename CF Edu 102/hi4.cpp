@@ -2,6 +2,7 @@
 using namespace::std;
 int main()
 {
+    ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
     int t;
     cin>>t;
     while(t--)
@@ -19,15 +20,11 @@ int main()
             set<int> x;
             x.insert(yo);
             cin>>l>>r;
-            
-            string left=s.substr(0,l-1);
-            string right=s.substr(r);
-        
-            string ans=left+right;
-           
-            for(int j=0;j<ans.length();j++)
+            for(int i=0;i<n;i++)
             {
-                if(ans[j]=='+')
+                if(i<l-1 || i>=r)
+                {
+                    if(s[i]=='+')
                 {
                     yo+=1;
                    
@@ -39,7 +36,7 @@ int main()
                    
                     x.insert(yo);
                 }
-                
+                }
             }
             cout<<x.size()<<endl;
         }
