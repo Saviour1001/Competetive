@@ -70,8 +70,19 @@ int main()
         if(d==1)
         {
             cout<<6<<"\n";
+            continue;
         }
-        //for(int i=6)
+        if(d==2)
+        {
+            cout<<15<<"\n";
+            continue;
+        }
+        bool found=false;
+        int n=7;
+        while(!found)
+        {
+
+        }
 
         //vector<int> div=answer(n);
         
