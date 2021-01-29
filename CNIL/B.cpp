@@ -30,20 +30,15 @@ double eps = 1e-12;
 #define all(x) (x).begin(), (x).end()
 #define sz(x) ((ll)(x).size())
  
-int lcs(string s,string s1,int m,int n)
-{
-    if(m==0 || n==0)
-    {
-        return 0;
-    }
-    if(s[m-1]==s1[n-1])
-    {
-        return 1+lcs(s,s1,m-1,n-1);
-    }
-    else{
-        return max(lcs(s,s1,m-1,n),lcs(s,s1,m,n-1));
-    }
-}
+
+ll power(ll a,ll b)
+{ll result=1;
+ while(b>0)
+  {
+if(b%2==1)result*=a;
+a*=a;
+b/=2;
+}return result;}
 int main()
 {
 //#ifndef ONLINE_JUDGE
@@ -70,11 +65,7 @@ for(int i=2;i*i<=N;i++)
     cin >> t;
     while(t--)
     {
-        string s,s1;
-        cin>>s>>s1;
-        int m=s.length();
-        int n=s1.length();
-        cout<<lcs(s,s1,m,n);
+        cout<<power(100,20)%MOD;
     }
     return 0;
 }
