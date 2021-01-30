@@ -65,21 +65,35 @@ for(int i=2;i*i<=N;i++)
     cin >> t;
     while(t--)
     {
-        int n;
+        ll n;
         cin>>n;
         string s;
         cin>>s;
-        string ans=s;
-        sort(s.begin(),s.end());
-        int count=0;
-        for(int i=0;i<s.length();i++)
+        ll dp1[n],dp2[n];
+        dp1[0]=0;
+        if(s[0]=='0')
+        dp1[0]++;
+        for(int i=1;i<n;i++)
         {
-            if(ans[i]!=s[i])
-            {
-                count+=1;
-            }
+            dp1[i]=dp1[i-1];
+            if(s[i]=='0')
+            dp1[i]++;
         }
-        cout<<count<<ln;
+        dp2[n-1]=0;
+        if(s[n-1]=='1')
+        dp2[n-1]++;
+        for(int i=n-2;i>=0;i--)
+        {
+            dp2[i]=dp2[i+1];
+            if(s[i]=='1')
+            dp2[i]++;
+        }
+        ll ans=0;
+        for(int i=0;i<n;i++)
+        {
+            ans=max(ans,dp1[i]+dp2[i]);
+        }
+        cout<<n-ans<<ln;
 
     }
     return 0;
