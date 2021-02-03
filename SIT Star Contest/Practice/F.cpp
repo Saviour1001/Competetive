@@ -29,8 +29,22 @@ double eps = 1e-12;
 #define flash ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL)
 #define all(x) (x).begin(), (x).end()
 #define sz(x) ((ll)(x).size())
- 
-
+int n=0;
+void calc(string s,vector<ll>& a)
+{
+    
+    if(n==50)
+    {
+        return;
+    }
+    ll b;
+    stringstream inte(s);
+    inte>>b;  
+    a.push_back(b);
+    n++;
+    calc("1"+s,a);
+    calc("2"+s,a);
+}
 ll power(ll a,ll b)
 { ll result=1;
  while(b>0)
@@ -61,21 +75,41 @@ for(int i=2;i*i<=N;i++)
     }
 }*/
     flash;
-    ll t;
+    string s="2";
+    vector<ll> a{2}; 
+    calc(s,a);
+    for(int i=0;i<a.size();i++)
+    {
+        cout<<a[i]<<ln;
+    }
+    /*for(int i=0;i<18;i++)
+    {
+        s="1"+s;
+        ll b;
+        stringstream into(s);
+        into>>b;
+        a.push_back(b);
+        s=s.substr(1);
+        s="2"+s;
+        stringstream inte(s);
+        inte>>b;
+        a.push_back(b);
+
+    }
+    sort(all(a));
+    for(int i=0;i<a.size();i++)
+    {
+        cout<<a[i]<<ln;
+    }*/
+
+    /*ll t;
     cin >> t;
     while(t--)
     {
-        ll n;
-        ll cost=0;
+        int n;
         cin>>n;
-        ll a,b,c;
-        a=n/5;
-        b=n/3-n/15;
-        c=n/2-n/10-n/6+n/30;
-        ll d=n-a-b-c;
-        cost=a*5+b*3+c*2+d;
-        cout<<cost<<ln;
+
         
-    }
+    }*/
     return 0;
 }
