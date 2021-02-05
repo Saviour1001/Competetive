@@ -65,39 +65,65 @@ for(int i=2;i*i<=N;i++)
     cin >> t;
     while(t--)
     {
-        int n,k;
-        cin>>n>>k;
-        int arr[n+5];
-        forn(i,n)cin>>arr[i];
-        int pos=-1;
+        int n,m;
+        cin>>n>>m;
+        int a[n],b[n],c[m];
+        forn(i,n)cin>>a[i];
+        forn(i,n)cin>>b[i];
+        forn(i,m)cin>>c[i];
+        int count=0;
+        int arr[n]={0};
         bool check=1;
-        arr[n]=-1;
-        while(k>0 && check)
+        for(int i=0;i<n;i++)
         {
-            for(int i=0;i<n;i++)
+            if(a[i]!=b[i])
             {
-                if(arr[i]<arr[i+1])
-                {
-                    //cout<<k<<"**"<<arr[i]<<"**"<<i+1<<ln;
-                    arr[i]+=1;
-                    k-=1;
-                    check=1;
-                    //cout<<k<<"--"<<arr[i]<<"--"<<i+1<<ln;
-                    if(k==0)
-                    {
-                        pos=i+1;
-                    }
-                    break;
-                }
+                arr[b[i]]+=1;
+                count+=1;
+            }
+            if(binary_search(c,c+m,b[i])==0)
+            {
+                check=0;
+                break;
+            }
+        }
+        if(count>m || check==0)
+        {
+            cout<<"NO\n";
+            continue;
+        }
+        check=1;
+        for(int i=0;i<m;i++)
+        {
+            if(arr[c[i]]>0)
+            {
+                arr[c[i]]-=1;
+            }
+            else
+            {
                 check=0;
             }
         }
-        if(check==0)
+        bool paint=0;
+        for(int i=0;i<n;i++)
         {
-            pos=-1;
+            if(arr[i]!=0)
+            {
+                paint=1;
+                break;
+            }
         }
-        cout<<pos<<ln;
-        
+        if(paint && check)
+        {
+            cout<<"NO\n";
+        }
+        else
+        {
+            cout<<"YES\n";
+        }
+
+
+
     }
     return 0;
 }
