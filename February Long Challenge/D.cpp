@@ -67,24 +67,18 @@ for(int i=2;i*i<=N;i++)
     {
         int n;
         cin>>n;
-        vector<int> w;
-        vector<int> l(n+5);
+        vector<int> w(n);
+        vector<int> l(n);
         for(int i=0;i<n;i++)
         {
-            int w1;
-            cin>>w1;
-            w.push_back(w1);
+            cin>>w[i];
         }
         for(int i=0;i<n;i++)
         {
-            int w1;
-            cin>>w1;
-            l.push_back(w1);
+            cin>>l[i];
         }
-        for(int i=0;i<w.size();i++)
-        {
-            cout<<w[i]<<endl;
-        }
+        v32 sorted=w;
+        sort(all(sorted));
     }
     return 0;
 }

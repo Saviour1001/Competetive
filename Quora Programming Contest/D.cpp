@@ -61,26 +61,12 @@ for(int i=2;i*i<=N;i++)
     }
 }*/
     flash;
-    ll t;
-    cin >> t;
-    while(t--)
+    ll n,q;
+    cin>>n>>q;
+    ll h[n];
+    for(int i=0;i<n;i++)
     {
-        ll n;
-        cin>>n;
-        ll arr[n];
-        for(int i=0;i<n;i++)
-        {
-            cin>>arr[i];
-        }   
-        sort(arr,arr+n);
-        int sum=abs(arr[0]-arr[n-1]);
-        int counter=0;
-        for(int i=1;i<n-1;i++)
-        {
-            int a=abs(arr[0]-arr[i])+abs(arr[n-1]-arr[i]);
-            counter=max(counter,a);
-        }
-        cout<<sum+counter<<ln;
-    }
-    return 0;
+        cin>>h[i];
+    }   
+    
 }

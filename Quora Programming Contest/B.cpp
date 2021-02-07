@@ -39,6 +39,19 @@ ll power(ll a,ll b)
     a*=a;
     b/=2;
    }return result;}
+
+ll count(int** arr,int n,int i,int j,int coin)
+{
+    if(i==n-1 && j=n-1)
+    {
+        return 1;
+    }
+    if(i>=n || j>=n)
+    {
+        return 0;
+    }
+    return count(arr[][],n,i+1,j)+count(arr[][],n,i,j+1);
+}   
 int main()
 {
 //#ifndef ONLINE_JUDGE
@@ -61,26 +74,17 @@ for(int i=2;i*i<=N;i++)
     }
 }*/
     flash;
-    ll t;
-    cin >> t;
-    while(t--)
+    ll n;
+    cin>>n;
+    int arr[n][n];
+    for(int i=0;i<n;i++)
     {
-        ll n;
-        cin>>n;
-        ll arr[n];
-        for(int i=0;i<n;i++)
+        for(int j=0;j<n;j++)
         {
-            cin>>arr[i];
-        }   
-        sort(arr,arr+n);
-        int sum=abs(arr[0]-arr[n-1]);
-        int counter=0;
-        for(int i=1;i<n-1;i++)
-        {
-            int a=abs(arr[0]-arr[i])+abs(arr[n-1]-arr[i]);
-            counter=max(counter,a);
+            cin>>arr[i][j];
         }
-        cout<<sum+counter<<ln;
     }
+    cout<<count(arr,n,0,0);
+
     return 0;
 }
