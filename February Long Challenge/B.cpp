@@ -73,14 +73,7 @@ for(int i=2;i*i<=N;i++)
             cin>>arr[i];
         }   
         sort(arr,arr+n);
-        int sum=abs(arr[0]-arr[n-1]);
-        int counter=0;
-        for(int i=1;i<n-1;i++)
-        {
-            int a=abs(arr[0]-arr[i])+abs(arr[n-1]-arr[i]);
-            counter=max(counter,a);
-        }
-        cout<<sum+counter<<ln;
+        cout<<2*(arr[n-1]-arr[0])<<ln;
     }
     return 0;
 }

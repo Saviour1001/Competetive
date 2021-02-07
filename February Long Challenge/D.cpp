@@ -68,17 +68,18 @@ for(int i=2;i*i<=N;i++)
         int n;
         cin>>n;
         vector<int> w(n);
-        vector<int> l(n);
+        v32 l(n);
         for(int i=0;i<n;i++)
         {
             cin>>w[i];
         }
-        for(int i=0;i<n;i++)
-        {
-            cin>>l[i];
-        }
+        forn(i,n)cin>>l[i];
         v32 sorted=w;
         sort(all(sorted));
+        int i=0;
+        int count=0;
+        if(sorted[0]!=w[0])
+        
     }
     return 0;
 }
