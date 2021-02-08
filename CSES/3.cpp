@@ -104,21 +104,25 @@ for(int i=2;i*i<=N;i++)
     //     cout << arr[i];
     // }
     flash;
-    ll n;
-    cin>>n;
-    bool arr[n+5]={0};
-    ll t;
-    while(cin>>t)
+    string s;
+    cin>>s;
+    int counter=1;
+    int ans=0;
+    for(int i=1;i<s.length();i++)
     {
-        arr[t]=1;
-    }
-    for(int i=1;i<=n;i++)
-    {
-        if(arr[i]==0)
+        if(s[i]!=s[i-1] && i!=1)
         {
-            cout<<i;
-            break;
+            counter++;
+            ans=max(ans,counter);
+            counter=0;
+        }
+        else
+        {
+            counter+=1;
+            ans=max(ans,counter);
         }
     }
+    cout<<ans;
+
     return 0;
 }
