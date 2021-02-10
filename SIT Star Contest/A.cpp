@@ -31,6 +31,29 @@ double eps = 1e-12;
 #define sz(x) ((ll)(x).size())
  
 
+vector<bool> segmentedSieve(long long L, long long R) {      //Generates primes between L,R             
+ long long lim = sqrt(R);
+ vector<bool> mark(lim + 1, false);
+vector<long long> primes;
+ for (long long i = 2; i <= lim; ++i) {
+ if (!mark[i]) {
+ primes.emplace_back(i);
+for (long long j = i * i; j <= lim; j += i)
+mark[j] = true;
+}
+}
+vector<bool> isPrime(R - L + 1, true);
+for (long long i : primes)
+for (long long j = max(i * i, (L + i - 1) / i * i); j <= R; j += i)
+isPrime[j - L] = false;
+if (L == 1)
+isPrime[0] = false;
+return isPrime;
+}
+
+
+
+
 ll power(ll a,ll b)
 { ll result=1;
  while(b>0)
@@ -60,38 +83,36 @@ for(int i=2;i*i<=N;i++)
         }
     }
 }*/
+      // int carry = 0;
+    // cin >> val;
+    // vector <int> arr(10000, 0);
+    // arr[0] = 1; //Initial product = 1
+    // int k = 0; //Current size of the number stored in arr
+    // for(int i = 1; i <= val; i++) {
+    //     for(int j = 0;j <= k; j++) {
+    //         arr[j] = arr[j] * i + carry;
+    //         carry = arr[j] / 10;
+    //         arr[j] = arr[j] % 10;
+    //     }
+    //     while(carry) { //Propogate the remaining carry to higher order digits
+    //         k++;
+    //         arr[k] = carry % 10;
+    //         carry /= 10;
+    //     }   
+    // }
+    // for(int i = k; i >= 0; i--) {
+    //     cout << arr[i];
+    // }
     flash;
     ll t;
     cin >> t;
     while(t--)
     {
-        int n;
-        cin>>n;
-        v32 weights(n);
-        v32 jumps(n);
-        if(n==2)
-        {
-            cin>>weights[0]>>weights[1];
-            cin>>jumps[0]>>jumps[1];
-            if(weights[0]<weights[1])
-            cout<<0<<ln;
-            else
-            {
-                if(jumps[0]==1)
-                {
-                    cout<<2<<ln;
-                }
-                else
-                {
-                    cout<<1<<ln;
-                }
-            }
-        }
-        else
-        {
-            
-        }
-        
+        int x,y;
+        cin>>x>>y;
+        int stairs=(x-1)*20;
+        int lift=((y-1)*5)+((x-1)*5);
+        cout<<min(stairs,lift)<<ln;
     }
     return 0;
 }
