@@ -39,6 +39,8 @@ ll power(ll a,ll b)
     a*=a;
     b/=2;
    }return result;}
+
+
 int main()
 {
 //#ifndef ONLINE_JUDGE
@@ -49,6 +51,9 @@ int main()
 
 const int N=1000001;
 bool sieve[N];
+v32 prime(N,0);
+prime[0]=0;
+prime[1]=0;
 memset(sieve,true,sizeof(sieve));                             //Sieve
 for(int i=2;i*i<=N;i++)
 {
@@ -58,11 +63,25 @@ for(int i=2;i*i<=N;i++)
         {
             sieve[j]=0;
         }
+        
+
     }
+    
+    
 }
+for(int i=2;i<=N;i++)
+{
+    prime[i]=prime[i-1];
+        if(sieve[i])
+        {
+            prime[i]++;
+        }
+}
+
     flash;
     ll t;
     cin >> t;
+
     while(t--)
     {
         ll x,y;
@@ -72,7 +91,14 @@ for(int i=2;i*i<=N;i++)
             cout<<"Chef\n";
             continue;
         }
-        
+        //cout<<prime[2022]<<"---\n";
+        if(prime[x]<=y)
+        {
+            cout<<"Chef\n";
+        }
+        else{
+            cout<<"Divyam\n";
+        }
         
     }
     return 0;

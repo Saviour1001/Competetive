@@ -69,28 +69,25 @@ for(int i=2;i*i<=N;i++)
         cin>>n;
         v32 weights(n);
         v32 jumps(n);
-        if(n==2)
+        forn(i,n)cin>>weights[i];
+        forn(i,n)cin>>jumps[i];
+        int ans=0;
+        vp32 v(n);
+        forn(i,n)v[i]={weights[i],i};
+        sort(all(v));
+        int lastPosition=v[0].se;
+        for(int i=1;i<n;i++)
         {
-            cin>>weights[0]>>weights[1];
-            cin>>jumps[0]>>jumps[1];
-            if(weights[0]<weights[1])
-            cout<<0<<ln;
-            else
+            int curPosition=v[i].second;
+            int index=v[i].second;
+            while(curPosition<=lastPosition)
             {
-                if(jumps[0]==1)
-                {
-                    cout<<2<<ln;
-                }
-                else
-                {
-                    cout<<1<<ln;
-                }
+                curPosition+=jumps[index];
+                ans++;
             }
+            lastPosition=curPosition;
         }
-        else
-        {
-            
-        }
+        cout<<ans<<ln;
         
     }
     return 0;
