@@ -75,6 +75,7 @@ for(int i=2;i*i<=N;i++)
         vp32 v(n);
         forn(i,n)v[i]={weights[i],i};
         sort(all(v));
+        
         int lastPosition=v[0].se;
         for(int i=1;i<n;i++)
         {
