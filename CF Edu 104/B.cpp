@@ -110,57 +110,17 @@ for(int i=2;i*i<=N;i++)
     {
         ll n,k;
         cin>>n>>k;
+        k--;
         if(n%2==0)
         {
-            if(k>n)
-            {
-                k=k%n;
-                if(k==0)
-                {
-                    k=n;
-                }
-            }
-            cout<<k<<ln;
-            continue;
+            ll ans=k%n;
+            cout<<ans+1<<ln;
+        }   
+        else{
+            ll mid=n/2;
+            ll ans=((k/mid)+k)%n;
+            cout<<ans+1<<ln;
         }
-        else
-        {
-            ll cycle=n/2;
-            if(k<n/2+1)
-            {
-                cout<<k<<ln;
-                continue;
-            }
-            ll a=n;
-            ll b=cycle*n;
-            ll c=1;
-
-            k=k%b;
-            for(ll i=1;i<=k;i++)
-            {
-                if(c+1!=a-1)
-                {
-                    continue;
-                }
-                else
-                {
-                    c++;
-                }
-                c++;
-                a--;
-                if(a-1==0)
-                {
-                    a=n;
-                }
-                if(c+1>n)
-                {
-                    c=1;
-                }
-            }
-            cout<<c<<ln;
-        }
-
-        
     }
     return 0;
 }
