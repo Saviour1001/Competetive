@@ -104,35 +104,14 @@ for(int i=2;i*i<=N;i++)
     //     cout << arr[i];
     // }
     flash;
-    ll a,b;ll c=0;
-    ll m=0;
-    ll limit=100000;
-    v64 arr(limit,0);
-    arr[0]=0;
-    ll i=1;
-    while(c<limit)
-    {
-        for(ll n=1;n<m;++n)
-        {
-            a=m*m-n*n;
-            b=2*m*n;
-            c=m*m+n*n;
-            if(c>limit)
-            break;
-        }
-        arr[i]=arr[i-1];
-        if(c==i)
-        arr[i]+=1;
-        i++;
-    }
     ll t;
     cin >> t;
-    cout<<"yo\n";
     while(t--)
     {
         ll n;
         cin>>n;
-        cout<<arr[n]<<ln;
+        ll l=sqrt(2*n-1);
+        cout<<(l-1)/2<<ln;
     }
     return 0;
 }
