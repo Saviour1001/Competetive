@@ -53,6 +53,7 @@ return isPrime;
 
 
 
+
 ll power(ll a,ll b)
 { ll result=1;
  while(b>0)
@@ -61,51 +62,6 @@ ll power(ll a,ll b)
     a*=a;
     b/=2;
    }return result;}
-
-ll limit=100000;
-v32 spf(limit); 
-   void sieve() 
-{ 
-    spf[1] = 1; 
-    for (int i=2; i<limit; i++) 
-  
-        // marking smallest prime factor for every 
-        // number to be itself. 
-        spf[i] = i; 
-  
-    // separately marking spf for every even 
-    // number as 2 
-    for (int i=4; i<limit; i+=2) 
-        spf[i] = 2; 
-  
-    for (int i=3; i*i<limit; i++) 
-    { 
-        // checking if i is prime 
-        if (spf[i] == i) 
-        { 
-            // marking SPF for all numbers divisible by i 
-            for (int j=i*i; j<limit; j+=i) 
-  
-                // marking spf[j] if it is not  
-                // previously marked 
-                if (spf[j]==j) 
-                    spf[j] = i; 
-        } 
-    } 
-} 
-  
-// A O(log n) function returning primefactorization 
-// by dividing by smallest prime factor at every step 
-vector<int> getFactorization(ll x) 
-{ 
-    vector<int> ret; 
-    while (x != 1) 
-    { 
-        ret.push_back(spf[x]); 
-        x = x / spf[x]; 
-    } 
-    return ret; 
-} 
 int main()
 {
 //#ifndef ONLINE_JUDGE
@@ -148,36 +104,34 @@ for(int i=2;i*i<=N;i++)
     //     cout << arr[i];
     // }
     flash;
-   
-  
-// Calculating SPF (Smallest Prime Factor) for every 
-// number till MAXN. 
-// Time Complexity : O(nloglogn) 
-
+    v64 cubes(10000,0);
+    forn(i,10000)cubes[i]=i*i*i;
+    cubes[0]=0;
     ll t;
     cin >> t;
     while(t--)
     {
-        ll n;
-        cin>>n;
+        ll x;
+        cin>>x;
         bool check=0;
-        v32 factors=getFactorization(n);
-        cout<<factors[0];
-        /*for(int i=0;i<factors.size();i++)
-        {
-            ll a= (4*n/factors[i]-(factors[i]*factors[i])/3);
-            ll b=sqrt(a);
-            if(floor(b)==b)
+        for(int i=1;i<10000;i++){
+            ll m=x-cubes[i];
+            check=binary_search(cubes.begin()+1,cubes.end(),m);
+            if(check)
             {
-                cout<<"YES\n";
-                check=1;
+                //cout<<m<<"--\n";
                 break;
             }
         }
-        if(check==0)
+        if(check)
+        {
+            cout<<"YES\n";
+        }
+        else
         {
             cout<<"NO\n";
-        }*/
+        }
+
     }
     return 0;
 }

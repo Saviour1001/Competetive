@@ -115,12 +115,12 @@ for(int i=2;i*i<=N;i++)
         ll counter=0;
         for(int i=0;i<n-1;i++)
         {
-            if(nums[i]>2*nums[i+1] || nums[i]*2<nums[i+1])
+            ll mi=min(nums[i],nums[i+1]);
+            ll ma=max(nums[i],nums[i+1]);
+            while(ma>mi*2)
             {
-                nums.insert(nums.begin()+i,(nums[i]+nums[i+1])/2);
+                mi=mi*2;
                 counter++;
-                i-=1;
-                
             }
         }   
         cout<<counter<<ln;

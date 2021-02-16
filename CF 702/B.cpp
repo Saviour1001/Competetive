@@ -117,28 +117,26 @@ for(int i=2;i*i<=N;i++)
             cin>>nums[i];
             arr[nums[i]%3]++;
         }
-        if(arr[0]==arr[1] && arr[0]==arr[2])
-        {
-            cout<<0<<ln;
-            continue;
-        }
         ll counter=0;
-        ll maximum=arr[0];
-        ll pos=0;
-        for(int i=1;i<3;i++)
+        for(int i=0;i<2;i++)
         {
-            if(maximum<arr[i])
+            if(arr[0]>ans)
             {
-                maximum=arr[i];
-                pos=i;
+                counter+=arr[0]-ans;
+                arr[1]+=arr[0]-ans;
+                arr[0]=ans;
             }
-        }
-        for(int i=0;i<3;i++)
-        {
-            if(arr[i]<ans)
+            if(arr[1]>ans)
             {
-                counter+=ans-arr[i]+(abs(i-pos))-1;
-                //cout<<counter<<ln;
+                counter+=arr[1]-ans;
+                arr[2]+=arr[1]-ans;
+                arr[1]=ans;
+            }
+            if(arr[2]>ans)
+            {
+                counter+=arr[2]-ans;
+                arr[0]+=arr[2]-ans;
+                arr[2]=ans;
             }
         }
         //cout<<pos<<ln;
