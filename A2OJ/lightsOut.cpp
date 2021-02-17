@@ -120,18 +120,17 @@ for(int i=2;i*i<=N;i++)
         {
             if(arr[i][j]%2==1)
             {
-                lights[i][j]+=1;
-                
-                //lights[i+1][j]+=1;
-                
-                lights[i-1][j]+=1;
-                lights[i][j+1]+=1;
-                lights[i][j-1]+=1;   
-                
+                lights[i][j]=!lights[i][j];
+                if(j+1<3)
+                lights[i][j+1]=!lights[i][j+1];
+                if(j-1>=0)
+                lights[i][j-1]=!lights[i][j-1];
+                if(i+1<3)
+                lights[i+1][j]=!lights[i+1][j];
+                if(i-1>=0)
+                lights[i-1][j]=!lights[i-1][j];
             }
-
         }
-        break;
     }
     for(int i=0;i<3;i++)
     {
