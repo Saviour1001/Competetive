@@ -1,0 +1,1 @@
+{"name":"Local: A","url":"h:\\Competetive\\CF 703\\A.cpp","tests":[{"id":1613659224145,"input":"6\n2\n1 2\n2\n1 0\n3\n4 4 4\n2\n0 0\n3\n0 1 0\n4\n1000000000 1000000000 1000000000 1000000000\n","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"h:\\Competetive\\CF 703\\A.cpp","group":"local","local":true}

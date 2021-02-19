@@ -1,0 +1,1 @@
+{"name":"Local: Drinks","url":"h:\\Competetive\\A2OJ\\Drinks.cpp","tests":[{"id":1613737652038,"input":"4\n0 25 50 75","output":""},{"id":1613737823992,"input":"3\n50 50 100","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"h:\\Competetive\\A2OJ\\Drinks.cpp","group":"local","local":true}
