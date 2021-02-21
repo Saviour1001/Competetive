@@ -110,7 +110,7 @@ for(int i=2;i*i<=N;i++)
     {
         ll n;
         cin>>n;
-        bool server=0;
+        int counter=0;
         bool error=0;
         for(int i=0;i<n;i++)
         {
@@ -118,23 +118,20 @@ for(int i=2;i*i<=N;i++)
             cin>>s;
             if(s=="start")
             {
-                server=1;
-                continue;
+                counter++;
             }
-            if(s=="restart" && server==0)
+            if(s=="restart")
             {
-                server=1;
-                continue;
+                counter++;
             }
-            if(s=="stop" && server==1)
+            if(s=="stop")
             {
-                server=0;
-                continue;
-            }
-            if(s=="stop" && server==0)
-            {
-                error=1;
-                break;
+                counter--;
+                if(counter<0)
+                {
+                    error=1;
+                    break;
+                }
             }
 
         }
