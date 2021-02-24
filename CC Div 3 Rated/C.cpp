@@ -115,21 +115,22 @@ for(int i=2;i*i<=N;i++)
         v32 sorted=patients;
         sort(all(sorted),greater<int>());
         vp32 pairs;
+        map<int,int> let;
         for(int i=0;i<n;i++)
         {
             pairs.push_back(make_pair(sorted[i],i+1));
+            let.insert(make_pair(sorted[i],i+1));
         }
         //sort(all(pairs));
-        v32 ans(n);
         for(int i=0;i<n;i++)
         {
-            cout<<pairs[i].first<<" ";
+            cout<<patients[i]<<" ";
         }
         cout<<ln;
-         for(int i=0;i<n;i++)
+        for(auto x:let)
         {
-            cout<<pairs[i].second<<" ";
-        }        
+            cout<<x.second<<" ";
+        }
     }
     return 0;
 }
