@@ -110,27 +110,43 @@ for(int i=2;i*i<=N;i++)
     {
         ll n,m;
         cin>>n>>m;
-        vector<string> matrix;
-        vector<v32>
-        int counter=0;
-        int posx,posy;
+        string s[n];
         for(int i=0;i<n;i++)
         {
-            string s;
-            cin>>s;
-            matrix.push_back(s);
+            cin>>s[i];
+        }
+        int up=n-1,down=0,left=m-1,right=0;
+        for(int i=0;i<n;i++)
+        {
             for(int j=0;j<m;j++)
             {
-                if(s[j]=='1')
-                counter++;
+                if(s[i][j]=='1')
+                {
+                    up=min(up,i);
+                    down=max(down,i);
+                    left=min(left,j);
+                    right=max(right,j);
+                }
             }
         }
-        if(counter%2==1)
+        bool check=1;
+        for(int i=up;i<=down;i++)
         {
-            cout<<"NO\n";
-            cout<<counter;
-            continue;
+            for(int j=left;j<=right;j++)
+            {
+                if(s[i][j]!='1')
+                {
+                    //cout<<"NO\n";
+                    check=0;
+                    break;
+                }
+            }
+            if(check==0)
+            {
+                break;
+            }
         }
+        check ? cout<<"YES\n" : cout<<"NO\n";
         
 
     }

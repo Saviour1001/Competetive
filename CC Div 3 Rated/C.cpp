@@ -110,27 +110,26 @@ for(int i=2;i*i<=N;i++)
     {
         ll n;
         cin>>n;
-        v32 patients(n);
-        forn(i,n)cin>>patients[i];
-        v32 sorted=patients;
-        sort(all(sorted),greater<int>());
-        vp32 pairs;
-        map<int,int> let;
+        vv32 arr(1001);
         for(int i=0;i<n;i++)
         {
-            pairs.push_back(make_pair(sorted[i],i+1));
-            let.insert(make_pair(sorted[i],i+1));
+            int temp;
+            cin>>temp;
+            arr[temp].push_back(i+1);
         }
-        //sort(all(pairs));
-        for(int i=0;i<n;i++)
+        v32 ans(n+1);
+        int hour=1;
+        for(int i=1000;i>=1;i--)
         {
-            cout<<patients[i]<<" ";
+            for(int j=0;j<arr[i].size();j++)
+            {
+                int val=arr[i][j];
+                ans[val]=hour++;
+            }
         }
-        cout<<ln;
-        for(auto x:let)
-        {
-            cout<<x.second<<" ";
-        }
+        for(int i=1;i<=n;i++)
+        cout<<ans[i]<<" ";
+        cout<<"\n";
     }
     return 0;
 }
