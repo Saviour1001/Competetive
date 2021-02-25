@@ -102,13 +102,14 @@ freopen("c_output.txt", "w", stdout);
         pizzas[i].read(i);
     }
     vv32 output;
+    int nxt=0;
     for(int s=4;s>=2;s--)
     {
-        if(pizzas.size()>=s){
+        if(nxt + s <= pizzas.size()){
             v32 delivery;
             for(int rep=0;rep<s;rep++)
             {
-                delivery.push_back(pizzas.back().id);
+                delivery.push_back(nxt++);
                 pizzas.pop_back();
             }
             output.push_back(delivery);
