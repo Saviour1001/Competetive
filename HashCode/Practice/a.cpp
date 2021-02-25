@@ -62,70 +62,69 @@ ll power(ll a,ll b)
     a*=a;
     b/=2;
    }return result;}
+
+
+struct Pizza{
+    int id;
+    vector<string> ings;
+    void read(int _id){
+    id=_id;
+    int cnt;
+    cin>>cnt;
+    for(int i=0;i<cnt;i++)
+    {
+        string s;
+        cin>>s;
+        ings.push_back(s);
+    }
+    }
+
+};
+
 int main()
 {
-//#ifndef ONLINE_JUDGE
-//freopen("input.txt", "r", stdin);                       //Inputs
-//freopen("output.txt", "w", stdout);
-//#endif
+#ifndef ONLINE_JUDGE
+freopen("c_example.txt", "r", stdin);                       //Inputs
+freopen("c_output.txt", "w", stdout);
+#endif
 
-
-/*const int N=1000001;
-bool sieve[N];
-memset(sieve,true,sizeof(sieve));                             //Sieve
-for(int i=2;i*i<=N;i++)
-{
-   if(sieve[i])
-    {
-        for(int j=i*i;j<=N;j+=i)
-        {
-            sieve[j]=0;
-        }
-    }
-}*/
-      // int carry = 0;
-    // cin >> val;
-    // vector <int> arr(10000, 0);
-    // arr[0] = 1; //Initial product = 1
-    // int k = 0; //Current size of the number stored in arr
-    // for(int i = 1; i <= val; i++) {
-    //     for(int j = 0;j <= k; j++) {
-    //         arr[j] = arr[j] * i + carry;
-    //         carry = arr[j] / 10;
-    //         arr[j] = arr[j] % 10;
-    //     }
-    //     while(carry) { //Propogate the remaining carry to higher order digits
-    //         k++;
-    //         arr[k] = carry % 10;
-    //         carry /= 10;
-    //     }   
-    // }
-    // for(int i = k; i >= 0; i--) {
-    //     cout << arr[i];
-    // }
     flash;
-    ll t;
-    cin >> t;
-    while(t--)
+    int m;
+    cin>>m;
+    int t[5]={0};
+    for(int i=2;i<=4;i++)
     {
-        ll n,k;
-        cin>>n>>k;
-        v32 points(k);
-        forn(i,k)cin>>points[i];
-        while(n--)
-        {
-            string s;
-            cin>>s;
-        
-        ll counter=0;
-        for(int i=0;i<k;i++)
-        {
-            if(s[i]=='1')
-            {
-                counter+=points[i];
-            }
-        }
-        cout<<counter<<ln;}
+        cin>>t[i];
     }
+    vector<Pizza> pizzas(m);
+    for(int i=0;i<m;i++)
+    {
+        pizzas[i].read(i);
+    }
+    vv32 output;
+    for(int s=4;s>=2;s--)
+    {
+        if(pizzas.size()>=s){
+            v32 delivery;
+            for(int rep=0;rep<s;rep++)
+            {
+                delivery.push_back(pizzas.back().id);
+                pizzas.pop_back();
+            }
+            output.push_back(delivery);
+            
+        }
+    }
+    cout<<output.size()<<ln;
+    for(v32 delivery : output){
+        cout<<delivery.size();
+        for(int id:delivery)
+        {
+            cout<<" "<<id;
+        }
+        cout<<"\n";
+    }
+    
+    
     return 0;
 }
