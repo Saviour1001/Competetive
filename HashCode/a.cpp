@@ -91,9 +91,10 @@ struct Paths{
 int main()
 {
 #ifndef ONLINE_JUDGE
-freopen("b.txt", "r", stdin);                       //Inputs
-freopen("b_out.txt", "w", stdout);
+freopen("a.txt", "r", stdin);                       //Inputs
+freopen("output.txt", "w", stdout);
 #endif
+
 
     flash;
     int d,i,s,v,f;
@@ -161,8 +162,5 @@ freopen("b_out.txt", "w", stdout);
             }
         }
     }
-
-
-    
     return 0;
 }
