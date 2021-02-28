@@ -113,7 +113,6 @@ for(int i=2;i*i<=N;i++)
         ll k;
         cin>>k;
         int ans;
-        int i=9;
         for(int i=9;i>=0;i--)
         {
             if(k-arr[i]>0)

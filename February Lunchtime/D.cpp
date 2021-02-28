@@ -113,7 +113,7 @@ for(int i=2;i*i<=N;i++)
         int arr[26]={0};
         for(int i=0;i<s.length();i++)
         {
-            arr[s[i]-97]+=1;
+            arr[s[i]-'a']+=1;
         }
         int even=0;
         int odd=0;
@@ -127,24 +127,20 @@ for(int i=2;i*i<=N;i++)
             }
             if(arr[i]%2==1 && arr[i]!=1)
             {
-                odd++;
+                int a=arr[i]-3;
+                odd+=a/2;
             }
             if(arr[i]%2==0 && arr[i]!=0)
             {
-                even++;
+                even+=arr[i]/2;
             }
         }
-        if(ones>even)
+        if(ones>even+odd)
         {
             cout<<"NO\n";
             continue;
         }
-        even=even-ones;
-        if(odd<even)
-        {
-            cout<<"NO\n";
-            continue;
-        }
+        
         cout<<"YES\n";   
     }
     return 0;
