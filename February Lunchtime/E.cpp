@@ -113,11 +113,14 @@ for(int i=2;i*i<=N;i++)
         v32 arr(n);
         forn(i,n)cin>>arr[i];
         v32 sorted=arr;
-        sort(all(sorted));
+        sort(all(sorted),greater<int>());
         if(sorted==arr)
         {
-            
+            cout<<"No\n";
+            continue;
         }
+        cout<<"Yes\n";
+    
 
     }
     return 0;
