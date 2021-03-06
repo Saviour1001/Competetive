@@ -1,0 +1,1 @@
+{"name":"Local: dp1","url":"h:\\Competetive\\A2OJ\\dp1.cpp","tests":[{"id":1615023029253,"input":"4\n10 30 40 20","output":""},{"id":1615038471476,"input":"2\n10 10\n","output":""},{"id":1615038481132,"input":"6\n30 10 60 10 60 50","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"h:\\Competetive\\A2OJ\\dp1.cpp","group":"local","local":true}

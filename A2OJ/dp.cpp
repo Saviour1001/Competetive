@@ -1,132 +1,42 @@
-#include <bits/stdc++.h>  
-using namespace std;
- 
-typedef long long ll;
-typedef long double ld;
-typedef pair<int,int> p32;
-typedef pair<ll,ll> p64;
-typedef pair<double,double> pdd;
-typedef vector<ll> v64;
-typedef vector<int> v32;
-typedef vector<vector<int> > vv32;
-typedef vector<vector<ll> > vv64;
-typedef vector<vector<p64> > vvp64;
-typedef vector<p64> vp64;
-typedef vector<p32> vp32;
-ll MOD = 998244353;
-double eps = 1e-12;
-#define forn(i,e) for(ll i = 0; i < e; i++)
-#define forsn(i,s,e) for(ll i = s; i < e; i++)
-#define rforn(i,s) for(ll i = s; i >= 0; i--)
-#define rforsn(i,s,e) for(ll i = s; i >= e; i--)
-#define ln "\n"
-#define dbg(x) cout<<#x<<" = "<<x<<ln
-#define mp make_pair
-#define pb push_back
-#define fi first
-#define se second
-#define INF 2e18
-#define flash ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL)
-#define all(x) (x).begin(), (x).end()
-#define sz(x) ((ll)(x).size())
- 
+#include<bits/stdc++.h>
+using namespace::std;
 
-vector<bool> segmentedSieve(long long L, long long R) {      //Generates primes between L,R             
- long long lim = sqrt(R);
- vector<bool> mark(lim + 1, false);
-vector<long long> primes;
- for (long long i = 2; i <= lim; ++i) {
- if (!mark[i]) {
- primes.emplace_back(i);
-for (long long j = i * i; j <= lim; j += i)
-mark[j] = true;
-}
-}
-vector<bool> isPrime(R - L + 1, true);
-for (long long i : primes)
-for (long long j = max(i * i, (L + i - 1) / i * i); j <= R; j += i)
-isPrime[j - L] = false;
-if (L == 1)
-isPrime[0] = false;
-return isPrime;
-}
+const long long N=101;
+const long long W=100005;
 
+long long dp[N][W];
+bool visited[N][W];
 
+long long n,c;
+long long w[N],v[N];
 
-
-ll power(ll a,ll b)
-{ ll result=1;
- while(b>0)
-  {
-    if(b%2==1)result*=a;
-    a*=a;
-    b/=2;
-   }return result;}
-
-int knapsack(ll weights[],ll value[],ll n,ll w)
+long long calc(long position,long long capacity)
 {
-    if(n==0 || w==0)
+    if(position==n)
     {
         return 0;
     }
-    if(weights[n-1]>w)
+    if(visited[position][capacity])
     {
-        return knapsack(weights,value,n-1,w);
+        return dp[position][capacity];
     }
-    ll a=knapsack(weights,value,n-1,w-weights[n-1])+value[n-1];
-    ll b=knapsack(weights,value,n-1,w);
-    return max(a,b);
+    visited[position][capacity]=1;
+    long long ans=0;
+    //take
+    if(capacity-w[position]>=0)
+    ans=max(ans ,calc(position+1, capacity-w[position] ) + v[position]);
+    //don't take
+    ans=max(ans,calc(position+1,capacity));
+    dp[position][capacity]=ans;
+    return ans;
+
 }
-int main()
-{
-//#ifndef ONLINE_JUDGE
-//freopen("input.txt", "r", stdin);                       //Inputs
-//freopen("output.txt", "w", stdout);
-//#endif
 
+int main(){
+    cin>>n>>c;
+    for(int i=0;i<n;i++){
+        cin>>w[i]>>v[i];
+    }
+    cout<<calc(0,c);
 
-/*const int N=1000001;
-bool sieve[N];
-memset(sieve,true,sizeof(sieve));                             //Sieve
-for(int i=2;i*i<=N;i++)
-{
-   if(sieve[i])
-    {
-        for(int j=i*i;j<=N;j+=i)
-        {
-            sieve[j]=0;
-        }
-    }
-}*/
-      // int carry = 0;
-    // cin >> val;
-    // vector <int> arr(10000, 0);
-    // arr[0] = 1; //Initial product = 1
-    // int k = 0; //Current size of the number stored in arr
-    // for(int i = 1; i <= val; i++) {
-    //     for(int j = 0;j <= k; j++) {
-    //         arr[j] = arr[j] * i + carry;
-    //         carry = arr[j] / 10;
-    //         arr[j] = arr[j] % 10;
-    //     }
-    //     while(carry) { //Propogate the remaining carry to higher order digits
-    //         k++;
-    //         arr[k] = carry % 10;
-    //         carry /= 10;
-    //     }   
-    // }
-    // for(int i = k; i >= 0; i--) {
-    //     cout << arr[i];
-    // }
-    flash;
-    ll n;
-    cin>>n;
-    ll w;
-    cin>>w;
-    ll weights[n],value[n];
-    for(int i=0;i<n;i++)
-    {
-        cin>>weights[i]>>value[i];
-    }
-    cout<<knapsack(weights,value,n,w)<<ln;
 }
