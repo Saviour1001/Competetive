@@ -106,42 +106,27 @@ for(int i=2;i*i<=N;i++)
     flash;
     ll t;
     cin >> t;
-    while(t--)
+    for(int z=1;z<=t;z++)
     {
-        ll n,e,c,po,pm,pk;
-        cin>>n>>e>>c>>po>>pm>>pk;
-        vector<ll> sol;
-        vector<ll> kvec;
-        forn(i,n+2)
-        kvec.push_back(i);
-        for(ll m=0;m<=n;m++)
+        cout<<"Case #"<<z<<": ";
+        ll r,c;
+        cin>>r>>c;
+        ll arr[r][c];
+        for(int i=0;i<r;i++)
         {
-            ll idx1=lower_bound(kvec.begin(),kvec.end(),(2*n-e-2*m)) - kvec.begin();
-            ll idx2=upper_bound(kvec.begin(),kvec.end(),(c-3*m)) - kvec.begin()-1;
-            if(idx2<idx1 || idx1==n+1) continue;
-            if(idx2==n+1 && idx2+3*m>c) continue;
-            ll k;
-            if(pk>po) k=(idx1<(n-m)?idx1:(n-m));
-            else k=(idx2<(n-m) ? idx2:(n-m));
-            ll o=n-k-m;
-            if(k+2*m >= 2*n-e && k+3*m <=c)
+            for(int j=0;j<c;j++)
             {
-                sol.push_back(po*o+pm*m+pk*k);
+                cin>>arr[i][j];
             }
         }
-        if(sol.size()==0) cout<<"-1\n";
-        else
+        bool row=0
+        for(int i=0;i<r;i++)
         {
-            ll min=sol[0];
-            for(ll i=0;i<sol.size();i++)
+            for(int j=0;j<c;j++)
             {
-                if(sol[i]<min)min=sol[i];
+                if(arr[i][j]==1)
             }
-            cout<<min<<ln;
         }
-        
-
-                
     }
     return 0;
 }
