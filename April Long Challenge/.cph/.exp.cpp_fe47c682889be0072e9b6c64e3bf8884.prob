@@ -1,0 +1,1 @@
+{"name":"Local: exp","url":"h:\\Competetive\\April Long Challenge\\exp.cpp","tests":[{"id":1617375557995,"input":"1\n8 4\n***abc*b","output":""},{"id":1617392757038,"input":"1\n6 3\nab***c","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"h:\\Competetive\\April Long Challenge\\exp.cpp","group":"local","local":true}

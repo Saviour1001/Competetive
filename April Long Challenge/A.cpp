@@ -74,46 +74,9 @@ ll power(ll a,ll b)
 }
 int main()
 {
-//#ifndef ONLINE_JUDGE
-//freopen("input.txt", "r", stdin);                       //Inputs
-//freopen("output.txt", "w", stdout);
-//#endif
-
-
-/*const int N=1000001;
-bool sieve[N];
-memset(sieve,true,sizeof(sieve));                             //Sieve
-for(int i=2;i*i<=N;i++)
-{
-   if(sieve[i])
-    {
-        for(int j=i*i;j<=N;j+=i)
-        {
-            sieve[j]=0;
-        }
-    }
-}*/
-      // int carry = 0;
-    // cin >> val;
-    // vector <int> arr(10000, 0);
-    // arr[0] = 1; //Initial product = 1
-    // int k = 0; //Current size of the number stored in arr
-    // for(int i = 1; i <= val; i++) {
-    //     for(int j = 0;j <= k; j++) {
-    //         arr[j] = arr[j] * i + carry;
-    //         carry = arr[j] / 10;
-    //         arr[j] = arr[j] % 10;
-    //     }
-    //     while(carry) { //Propogate the remaining carry to higher order digits
-    //         k++;
-    //         arr[k] = carry % 10;
-    //         carry /= 10;
-    //     }   
-    // }
-    // for(int i = k; i >= 0; i--) {
-    //     cout << arr[i];
-    // }
     flash;
+
+    
     ll t;
     cin >> t;
     while(t--)
