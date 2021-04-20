@@ -113,33 +113,13 @@ for(int i=2;i*i<=N;i++)
         cin>>n;
         string s;
         cin>>s;
-        v32 ans(n);
-        int counter=0;
-            v32 alpha(26,0);
-        for(int i=0;i<s.length();i++)
+        ll counter=0;
+        for(ll i=0;i<n;i++)
         {
-            if(alpha[s[i]-65]==1)
-            {
-                for(int h=0;h<26;h++)
-                {
-                    alpha[h]=0;
-                }
-                counter=1;
-                alpha[s[i]-65]=1;
-                //cout<<"Yo\n";
-            }
-            else if(alpha[s[i]-65]==0)
-            {
-                //cout<<s[i]-65<<" ";
-                alpha[s[i]-65]=1;
-                //cout<<alpha[s[i]-65]<<ln;
-                counter++;
-            }
-            ans[i]=counter;
-        }
-        for(int i=0;i<ans.size();i++)
-        {
-            cout<<ans[i]<<" ";
+            if(i==0 || s[i]<=s[i-1])counter=1;
+            else
+            counter++;
+            cout<<counter<<" "; 
         }
         cout<<ln;
     }
