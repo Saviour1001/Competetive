@@ -70,39 +70,33 @@ int main()
             }
         }
         int l = 1;
-        for(int i=0;i<n;i++)
+        while (l < n && l < m)
         {
-            for(int j=0;j<m;j++)
+            int i = 0;
+            int j = 0;
+            while (i + l < n)
             {
-                cout<<pref[i][j]<<" ";
+                while (j + l < m)
+                {
+                    //cout << i << " " << j << ln;
+                    ll sum = pref[i + l][j + l];
+                    if (j > 0)
+                        sum -= pref[i + l][j - 1];
+                    if (i > 0)
+                        sum -= pref[i - 1][j + l];
+                    if (i > 0 && j > 0)
+                        sum += pref[i - 1][j - 1];
+                    //cout << "sum=> " << sum << ln;
+                    if (sum / ((l+1) * (l+1)) >= k)
+                        counter++;
+                    j++;
+                }
+                i++;
+                j=0;
             }
-            cout<<ln;
+            l++;
         }
-        // while (l < n && l < m)
-        // {
-        //     int i = 0;
-        //     int j = 0;
-        //     while (j + l < m && i + l < n)
-        //     {
-        //         cout<<i<<" "<<j<<ln;
-        //         int sum = pref[i + l][j + l];
-        //         if (j > 0)
-        //             sum -= pref[i + l][j - 1];
-        //         if (i > 0)
-        //             sum -= pref[i - 1][j + l];
-        //         if (i > 0 && j > 0)
-        //             sum += pref[i - 1][j - 1];
-        //         cout <<"sum=> " <<sum << ln;
-        //         if (sum / (l * l) >= k)
-        //             counter++;
-
-        //         j++;
-        //         i++;
-
-        //     }
-        //     l++;
-        // }
-        //cout<<counter<<ln;
+        cout<<counter<<ln;
     }
     return 0;
 }

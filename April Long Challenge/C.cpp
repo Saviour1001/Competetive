@@ -52,88 +52,68 @@ return isPrime;
 }
 
 
-
-
-ll power(ll a,ll b)
-{ ll result=1;
- while(b>0)
-  {
-    if(b%2==1)result*=a;
-    a*=a;
-    b/=2;
-   }return result;}
-
-   float rounder(float var)
+string decimalToBinary(int n)
 {
-    // 37.66666 * 100 =3766.66
-    // 3766.66 + .5 =3767.16    for rounding off value
-    // then type cast to int so value is 3767
-    // then divided by 100 so the value converted into 37.67
-    float value = (int)(var * 100 + .5);
-    return (float)value / 100;
+    string s = bitset<64> (n).to_string();
+    const auto loc1 = s.find('1');
+      
+    if(loc1 != string::npos)
+        return s.substr(loc1);
+      
+    return "0";
+}
+int isSubstring(string s1, string s2)
+{
+    int M = s1.length();
+    int N = s2.length();
+ 
+    for (int i = 0; i <= N - M; i++) {
+        int j;
+ 
+        
+        for (j = 0; j < M; j++)
+            if (s2[i + j] != s1[j])
+                break;
+ 
+        if (j == M)
+            return i;
+    }
+ 
+    return -1;
+}
+bool isSubSequence(string str1, string str2)
+{
+    int m=str1.length();
+    int n=str2.length();
+    int j = 0; 
+    for (int i = 0; i < n && j < m; i++)
+        if (str1[j] == str2[i])
+            j++;
+ 
+    
+    return (j == m);
 }
 int main()
 {
     flash;
-
-    
     ll t;
     cin >> t;
     while(t--)
     {
-        ll n;
-        cin>>n;
-        ll levels=0;
-
-        if(n/4>=2 && n%4==0)
-        levels=n/4-1;
-        
-        if(n/4>=2 && n%4)
+        string s;
+        cin>>s;
+        int i=0;
+        while(true)
         {
-            levels=n/4;
-        }
-        if(n/4==1 && n%4)
-        {
-            levels=1;
-        }
-        ll top_level=n%4;
-        ll pips=0;
-        pips+=levels*44;
-        if(top_level==0)
-        {
-            pips+=60;
-        }
-        if(top_level==1)
-        {
-            pips+=20;
-            if(levels>=1)
+            string num=decimalToBinary(i);
+            if(isSubSequence(num,s)==0)
             {
-                pips+=12;
+                cout<<num;
+                break;
             }
+            i++;
         }
-        if(top_level==2)
-        {
-            pips+=36;
-            if(levels>=1)
-            {
-                pips+=8;
-            }
-        }
-        if(top_level==3)
-        {
-            pips+=51;
-            if(levels>=1)
-            {
-                pips+=4;
-            }
-        }
-        cout<<pips<<ln;
+        cout<<ln;
     }
     return 0;
 }
-
-        // n=4 =>60;
-        // n=3 =>51;
-        // n=2 =>36;
-        // n=1 => 20;
-        //cout<<levels;
