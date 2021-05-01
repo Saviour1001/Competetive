@@ -108,7 +108,7 @@ for(int i=2;i*i<=N;i++)
     cin >> t;
     for(int z=1;z<=t;z++)
     {
-        cout<<"Case #"<<z<<": ";
+        // cout<<"Case #"<<z<<": ";
         ll n,k;
         cin>>n>>k;
         v32 tickets(k,0);
@@ -232,9 +232,6 @@ for(int i=2;i*i<=N;i++)
                 counter+=2;
             }
         }
-        
-
-        
         cout<<(float) counter/k<<ln;
 
     }

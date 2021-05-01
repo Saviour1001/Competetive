@@ -52,34 +52,34 @@ return isPrime;
 }
 
 
-int isConsecutive(string str)
+
+void block(long int x)
 {
-    int start;
-  
-    int length = str.size();
-  
-    for (int i = 0; i < length / 2; i++) {
-  
-        string new_str = str.substr(0, i + 1);
-  
-        int num = atoi(new_str.c_str());
-  
-        start = num;
-  
-        while (new_str.size() < length) {
-  
-            num++;
-  
-            new_str = new_str + to_string(num);
-        }
-  
-        if (new_str == str) 
-           return start;
+    vector<long int> v;
+      
+    // Converting the decimal number
+    // into its binary equivalent.
+    cout << "Blocks for " << x << " : ";
+    while (x > 0) 
+    {
+        v.push_back(x % 10);
+        x = x / 10;
     }
   
-    return -1;
+    // Displaying the output when
+    // the bit is '1' in binary
+    // equivalent of number.
+    for (int i = 0; i < v.size(); i++) 
+    {
+        if (v[i] == 1) 
+        {
+            cout << i;
+            if (i != v.size() - 1)
+                cout << ", ";
+        }
+    }
+    cout << endl;
 }
-
 ll power(ll a,ll b)
 { ll result=1;
  while(b>0)
@@ -90,27 +90,30 @@ ll power(ll a,ll b)
    }return result;}
 int main()
 {
+
     flash;
     ll t;
     cin >> t;
-    for(int z=1;z<=t;z++)
+    while(t--)
     {
-        cout<<"Case #"<<z<<": ";
-        ll y;
-        cin>>y;
-
-        while(true)
+        ll n;
+        cin>>n;
+        ll div=n/2050;
+        ll counter=0;
+        // cout<<div<<ln;
+        while(div>0)
         {
-            y++;
-            string s = to_string(y);
-            if(isConsecutive(s)!=-1)
-            {
-                cout<<y<<ln;
-                break;
-            }
+            ll b = div%10;
+            counter+=b;
+            div/=10;
+    
         }
-
-        
+        if(counter>0)
+        cout<<counter<<ln;
+        else
+        {
+            cout<<"-1\n";
+        }
     }
     return 0;
 }

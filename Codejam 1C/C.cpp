@@ -111,32 +111,11 @@ for(int i=2;i*i<=N;i++)
         cout<<"Case #"<<z<<": ";
         string s,e;
         cin>>s>>e;
-        int counter=0;
-        int rone=0;
-        int rzero=0;
-        for(int i=0;i<e.length();i++)
+        int steps=0;
+        while(steps<1000)
         {
-            if(e[i]=='1')
-            {
-                rone++;
-            }
-            else
-            {
-                rzero++;
-            }
-        }
-        int one = 0;
-        int zero=0;
-        for(int i=0;i<s.length();i++)
-        {
-            if(s[i]=='1')
-            {
-                one++;
-            }
-            else
-            {
-                zero++;
-            }
+            steps++;
+            
         }
     }
     return 0;
