@@ -121,46 +121,26 @@ for(int i=2;i*i<=N;i++)
             cout<<"NO\n";
             continue;
         }
-        sort(weights.rbegin(),weights.rend());
+        sort(weights.begin(),weights.end());
         v32 ans;
         int cs=0;
-        bool flag=0;
-        int i=0;
-        while(weights.size()>0)
+        int z;
+        for(int i=0;i<n;i++)
         {
-            // cout<<i<<ln;
-            if(i==weights.size())
-            {
-                i=0;
-                continue;
-            }
             if(cs+weights[i]==x)
             {
-                i++;
+                z=weights[i];
                 continue;
-            }
-            if(cs>x)
-            {
-                flag=1;
-                break;
             }
             if(cs+weights[i]!=x)
             {
                 ans.push_back(weights[i]);
                 cs+=weights[i];
-                weights.erase(weights.begin()+i);
-                i++;
             }
         }
-        if(flag==1 && weights.size()>0)
-        {
-            for(i=0;i<weights.size();i++)
-            {
-                ans.push_back(weights[i]);
-            }
-        }
+        ans.push_back(z);
         cout<<"YES\n";
-        for(i=0;i<n;i++)
+        for(int i=0;i<n;i++)
         {
             cout<<ans[i]<<" ";
         }

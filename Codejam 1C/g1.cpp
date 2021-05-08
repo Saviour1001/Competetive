@@ -53,27 +53,8 @@ return isPrime;
 
 bool checker(int n)
 {
-    if(n%2==1)
-    {
-        return false;
-    }
-    if(n==2)
-    {
-        return true;
-    }
-    if(n==4)
-    {
-        return true;
-    }
-    if(n<2)
-    {
-        return false;
-    }
-    if(n%2==0)
-    {
-        return checker(n/2) || checker(n/4);
-    }
-    return true;
+    int x = sqrt(n);
+    return x*x==n;
 }
 
 
@@ -94,14 +75,30 @@ int main()
     {
         int n;
         cin>>n;
-        if(checker(n))
-        {
-            cout<<"YES\n";
-        }       
-        else
+        if(n%2==1)
         {
             cout<<"NO\n";
+            continue;
         }
+        int a = n/2;
+        if(checker(a))
+        {
+            cout<<"YES\n";
+            continue;
+        }
+        if(n%4!=0)
+        {
+            cout<<"NO\n";
+            continue;
+        }
+        int b = n/4;
+        if(checker(b))
+        {
+            cout<<"YES\n";
+            continue;
+        }
+        cout<<"NO\n";
+
     }
     return 0;
 }
