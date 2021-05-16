@@ -127,37 +127,35 @@ int main()
         }
         diagonals[0] = string(1, horizontal[0][0]) + string(1, horizontal[1][1]) + string(1, horizontal[2][2]);
         diagonals[1] = string(1, horizontal[0][2]) + string(1, horizontal[1][1]) + string(1, horizontal[2][0]);
-        bool double_winner = 0;
+        int count_wins=0;
         for (int i = 0; i < 3; i++)
         {
-            if (checker(horizontal[i]) && double_winner == 0 && winner == 0)
-            {
-                if (winner == 0)
-                    winner = 1;
-                if (winner == 1)
-                    double_winner = 1;
-            }
-            if (checker(vertical[i]) && double_winner == 0 && winner == 0)
-            {
-                if (winner == 0)
-                    winner = 1;
-                if (winner == 1)
-                    double_winner = 1;
-            }
+            if(checker(horizontal[i]))count_wins++;
+            if(checker(vertical[i]))count_wins++;
         }
-        if (checker(diagonals[0]) && double_winner == 0 && winner == 0)
+        if (checker(diagonals[0]))
         {
-            if (winner == 0)
-                winner = 1;
-            if (winner == 1)
-                double_winner = 1;
+            count_wins++;
         }
-        if (checker(diagonals[1]) && double_winner == 0 && winner == 0)
+        if (checker(diagonals[1]))
         {
-            if (winner == 0)
-                winner = 1;
-            if (winner == 1)
-                double_winner = 1;
+            count_wins++;
+        }
+        if(count_wins==1 && abs(x-o)<=1)
+        {
+            cout<<"1\n";
+        }
+        if(count_wins==0 && x+o==9 && abs(x-o)==1)
+        {
+            cout<<"1\n";
+        }
+        if(count_wins==0 && x+o<9 && abs(x-o)<=1)
+        {
+            cout<<"2\n";
+        }
+        if(count_wins>1 || abs(x-o)>1)
+        {
+            cout<<"3\n";
         }
     }
     return 0;
