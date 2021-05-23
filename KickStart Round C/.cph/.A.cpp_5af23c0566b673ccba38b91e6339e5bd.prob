@@ -1,0 +1,1 @@
+{"name":"Local: A","url":"h:\\Competetive\\KickStart Round C\\A.cpp","tests":[{"id":1621768111560,"input":"1\n2 3\nbc","output":""},{"id":1621768293723,"input":"3\n2 3\nbc\n5 5\nabcdd\n1 5\nd\n","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"h:\\Competetive\\KickStart Round C\\A.cpp","group":"local","local":true}
