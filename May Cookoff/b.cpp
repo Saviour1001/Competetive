@@ -51,53 +51,8 @@ isPrime[0] = false;
 return isPrime;
 }
 
-bool palidrome(string s)
-{
-    bool flag=1;
-    ll lhs=0;
-    ll rhs=s.length()-1;
-    while(lhs<rhs)
-    {
-        if(s[lhs]!=s[rhs])
-        {
-            flag=0;
-            break;
-        }
-        lhs++;
-        rhs--;
-    }
-    return flag;
-}
 
-void printAllKLengthRec(string set, string prefix,int n, int k,string s,ll &counter)
-{
-     
-    // Base case: k is 0,
-    // print prefix
-    if (k == 0)
-    {
-        // if(prefix<s)
-        if(prefix<s && palidrome(prefix))
-        {
-            // cout<<prefix<<ln;
-            counter++;
-        }
-        return;
-    }
- 
-    for (int i = 0; i < n; i++)
-    {
-        string newPrefix;
-         
-        // Next character of input added
-        newPrefix = prefix + set[i];
-         
-        // k is decreased, because
-        // we have added a new character
-        printAllKLengthRec(set, newPrefix, n, k - 1,s,counter);
-    }
- 
-}
+
 
 long long binpow(long long a, long long b) {
     long long res = 1;
@@ -111,19 +66,47 @@ long long binpow(long long a, long long b) {
 }
 int main()
 {
-    flash;
-    ll t;
-    cin >> t;
-    for(int z=1;z<=t;z++)
+//#ifndef ONLINE_JUDGE
+//freopen("input.txt", "r", stdin);                       //Inputs
+//freopen("output.txt", "w", stdout);
+//#endif
+
+
+/*const int N=1000001;
+bool sieve[N];
+memset(sieve,true,sizeof(sieve));                             //Sieve
+for(int i=2;i*i<=N;i++)
+{
+   if(sieve[i])
     {
-        cout<<"Case #"<<z<<": ";
-        string s;
-        ll n,k;
-        cin>>n>>k>>s;
-        string alpha="abcdefghijklmnopqrstuvwxyz";
-        ll counter=0;
-        printAllKLengthRec(alpha,"",k,n,s,counter);
-        cout<<counter<<ln;
+        for(int j=i*i;j<=N;j+=i)
+        {
+            sieve[j]=0;
+        }
     }
+}*/
+      // int carry = 0;
+    // cin >> val;
+    // vector <int> arr(10000, 0);
+    // arr[0] = 1; //Initial product = 1
+    // int k = 0; //Current size of the number stored in arr
+    // for(int i = 1; i <= val; i++) {
+    //     for(int j = 0;j <= k; j++) {
+    //         arr[j] = arr[j] * i + carry;
+    //         carry = arr[j] / 10;
+    //         arr[j] = arr[j] % 10;
+    //     }
+    //     while(carry) { //Propogate the remaining carry to higher order digits
+    //         k++;
+    //         arr[k] = carry % 10;
+    //         carry /= 10;
+    //     }   
+    // }
+    // for(int i = k; i >= 0; i--) {
+    //     cout << arr[i];
+    // }
+    flash;
+    string s;
+    cin>>s;
     return 0;
 }
