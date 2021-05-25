@@ -13,6 +13,7 @@ void solve() {
         cin >> x;
         v[x]++;
     }
+
     for (auto [x, y] : v) {
         q.push({y, x});
     }
