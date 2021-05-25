@@ -15,7 +15,6 @@ typedef vector<p64> vp64;
 typedef vector<p32> vp32;
 ll MOD = 998244353;
 double eps = 1e-12;
-const int32_t M=1e9+7;
 #define forn(i,e) for(ll i = 0; i < e; i++)
 #define forsn(i,s,e) for(ll i = s; i < e; i++)
 #define rforn(i,s) for(ll i = s; i >= 0; i--)
@@ -52,6 +51,7 @@ isPrime[0] = false;
 return isPrime;
 }
 
+const int32_t M=1e9+7;
 
 
 long long binpow(long long a, long long b,int MOD=M) {
@@ -66,34 +66,69 @@ long long binpow(long long a, long long b,int MOD=M) {
 }
 int main()
 {
+//#ifndef ONLINE_JUDGE
+//freopen("input.txt", "r", stdin);                       //Inputs
+//freopen("output.txt", "w", stdout);
+//#endif
+
+
+/*const int N=1000001;
+bool sieve[N];
+memset(sieve,true,sizeof(sieve));                             //Sieve
+for(int i=2;i*i<=N;i++)
+{
+   if(sieve[i])
+    {
+        for(int j=i*i;j<=N;j+=i)
+        {
+            sieve[j]=0;
+        }
+    }
+}*/
+      // int carry = 0;
+    // cin >> val;
+    // vector <int> arr(10000, 0);
+    // arr[0] = 1; //Initial product = 1
+    // int k = 0; //Current size of the number stored in arr
+    // for(int i = 1; i <= val; i++) {
+    //     for(int j = 0;j <= k; j++) {
+    //         arr[j] = arr[j] * i + carry;
+    //         carry = arr[j] / 10;
+    //         arr[j] = arr[j] % 10;
+    //     }
+    //     while(carry) { //Propogate the remaining carry to higher order digits
+    //         k++;
+    //         arr[k] = carry % 10;
+    //         carry /= 10;
+    //     }   
+    // }
+    // for(int i = k; i >= 0; i--) {
+    //     cout << arr[i];
+    // }
     flash;
     ll t;
     cin >> t;
     for(int z=1;z<=t;z++)
     {
-        // cout<<"Case #"<<z<<": ";
+        cout<<"Case #"<<z<<": ";
         int n,k;
         string s;
         cin>>n>>k>>s;
-
         int m=(n+1)/2;
-
         int ans=0;
         for(int i=0;i<m;i++)
         {
             char c=s[i];
-            int d=(c-'a');
-            ans = (ans+ d* binpow(k,m-1-i))% M;
-            cout<<ans<<ln;
+            int d=c-'a';
+            ans=(ans+ d*binpow(k,m-1-i))%M;
+            // cout<<ans<<ln;
         }
         string t;
         forn(i,m)t.push_back(s[i]);
-        forn(i,n-m)
-        {
-            t.push_back(s[n-m-i-1]);
-        }
+        forn(i,n-m)t.push_back(s[n-m-i-1]);
+        // cout<<t;
         if(t<s)ans++;
-        ans = ans%M;
+        ans=ans%M;
         cout<<ans<<ln;
     }
     return 0;
