@@ -46,42 +46,19 @@ bool checker(int n)
 void solve(int test){
     int w,h,n;
     cin>>w>>h>>n;
-    int sheets=0;
-    if(w%2==0)
+    int sheets=1;
+    while(w%2==0)
     {
-        if(checker(w))
-        {
-            while(w)
-            {
-                w/=2;
-                sheets+=1;
-            }
-        }
-        else
-        sheets++;
+        w/=2;
+        sheets*=2;
     }
-    if(h%2==0)
+    while(h%2==0)
     {
-        if(checker(h))
-        {
-            while(h)
-            {
-                h/=2;
-                sheets+=1;
-            }
-        }
-        else
-        sheets++;
+        h/=2;
+        sheets*=2;
     }
-    n=n-power(2,sheets);
-    if(n<=0)
-    {
-        cout<<"YES\n";
-    }
-    else
-    {
-        cout<<"NO\n";
-    }
+    // cout<<sheets<<ln;
+    sheets>=n?cout<<"YES\n":cout<<"NO\n";
 }
 
 
