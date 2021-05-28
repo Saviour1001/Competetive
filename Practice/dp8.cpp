@@ -26,36 +26,52 @@ template<typename T,typename T1>T amin(T &a,T1 b){if(b<a)a=b;return a;}
 const long long INF=1e18;
 const int32_t M=1e9+7;
 const int32_t MM=998244353;
-const int N=1e5+5;
-int n;
-int heights[N];
-int dp[N];
-int visited[N];
+const int N=0;
 
-int calc(int position)
+int LCS(string a,string b)
 {
-    if(position==n-1)
+    int m=a.length();
+    int n=b.length();
+
+    int dp[m+1][n+1];
+    int result=0;
+    for(int i=0;i<=m;i++)
     {
-        return 0;
+        for(int j=0;j<=n;j++)
+        {
+            if(i==0 || j==0)
+            {
+                dp[i][j]=0;
+            }
+            else if(a[i-1]==b[j-1])
+            {
+                dp[i][j]=dp[i-1][j-1]+1;
+            }
+            else
+            {
+                dp[i][j]=max(dp[i-1][j],dp[i][j-1]);
+            }
+            result=max(dp[i][j],result);
+        }
     }
-    if(visited[position])
+    for(int i=0;i<=m;i++)
     {
-        return dp[position];
+        for(int j=0;j<=n;j++)
+        {
+            cout<<dp[i][j]<<" ";
+        }
+        cout<<ln;
     }
-    visited[position]=1;
-    int ans=INF;
-    if(position+1<n)
-    {
-        int a=abs(heights[position]-heights[position+1]);
-        ans=min(ans,a+calc(position+1));
-    }
-    if(position+2<n)
-    {
-        int a=abs(heights[position]-heights[position+2]);
-        ans=min(ans,a+calc(position+2));
-    }
-    return dp[position]=ans;
+    
+    return dp[m][n];
 }
+void solve(int test){
+    string a,b;
+    cin>>a>>b;
+    cout<<LCS(a,b);
+}
+
+
 signed main(){
     ios_base::sync_with_stdio(false);
     cin.tie(0);cout.tie(0);
@@ -67,8 +83,8 @@ signed main(){
     #ifdef NCR
     init();
     #endif
-    cin>>n;
-    for(auto &x:heights)cin>>x;
-    cout<<calc(0);
+    int t=1;
+    cin>>t;
+    rep(i,1,t+1) solve(i);
     return 0;
 }
