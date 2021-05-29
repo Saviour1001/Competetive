@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- <script src="./1.js"></script> -->
+  </head>
+
+  <body>
+    <p>Yo</p>
+    <script type="text/javascript">
+      function Upload() {
+        var fileUpload = document.getElementById("fileUpload");
+        var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.csv|.txt)$/;
+        if (regex.test(fileUpload.value.toLowerCase())) {
+          if (typeof FileReader != "undefined") {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+              // console.log(e.target.result);
+              csv = e.target.result;
+              var array = csv.toString().split("\r");
+
+              let headers = array[0].split(", ");
+              let json = csvJSON(headers);
+              const obj = JSON.parse(json);
+              console.log(obj.length);
+              console.log(obj[0].dp_url);
+              var mainContainer = document.getElementById("myData");
+              for (var i = 0; i < obj.length; i++) {
+                var div = document.createElement("div");
+                div.innerHTML =
+                  "Name: " +
+                  obj[i].first_name +
+                  " " +
+                  obj[i].last_name +
+                  " " +
+                  "<br/>" +
+                  obj[i].email +
+                  "<br />" +
+                  "<img src=" +
+                  obj[i].dp_url +
+                  ">" +
+                  "<br/>";
+                mainContainer.appendChild(div);
+              }
+            };
+            reader.readAsText(fileUpload.files[0]);
+          } else {
+            alert("This browser does not support HTML5.");
+          }
+        } else {
+          alert("Please upload a valid CSV file.");
+        }
+      }
+
+      function csvJSON(csv) {
+        csv = csv + " ";
+        var lines = csv.split("\n");
+
+        var result = [];
+
+        var headers = lines[0].split(",");
+
+        for (var i = 1; i < lines.length; i++) {
+          var obj = {};
+          var currentline = lines[i].split(",");
+
+          for (var j = 0; j < headers.length; j++) {
+            obj[headers[j]] = currentline[j];
+          }
+
+          result.push(obj);
+        }
+
+        //return result; //JavaScript object
+        return JSON.stringify(result); //JSON
+      }
+    </script>
+    <input type="file" id="fileUpload" />
+    <input type="button" id="upload" value="Upload" onclick="Upload()" />
+    <hr />
+    <!-- <div id="dvCSV"></div> -->
+    <div id="myData"></div>
+  </body>
+</html>
