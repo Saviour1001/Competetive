@@ -6,11 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <!-- <script src="./1.js"></script> -->
+    <link rel="stylesheet" href="./1.css" />
   </head>
 
   <body>
-    <p>Yo</p>
-    <script type="text/javascript">
+    <script>
+      // var mainContainer = document.getElementById("myData");
+      function remover(i) {
+        var list = document.getElementById("myData");
+        if (list.hasChildNodes()) {
+          console.log(list.childNodes[i]);
+          list.removeChild(list.childNodes[i]);
+        }
+      }
       function Upload() {
         var fileUpload = document.getElementById("fileUpload");
         var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.csv|.txt)$/;
@@ -27,23 +35,33 @@
               const obj = JSON.parse(json);
               console.log(obj.length);
               console.log(obj[0].dp_url);
-              var mainContainer = document.getElementById("myData");
               for (var i = 0; i < obj.length; i++) {
                 var div = document.createElement("div");
                 div.innerHTML =
-                  "Name: " +
+                  '<div class="row">' +
+                  '<div class="column">' +
+                  '<div class= "card">' +
+                  "<img src=" +
+                  obj[i].dp_url +
+                  'style="width:100%">' +
+                  '<div class="container">' +
+                  "<h4><b>" +
                   obj[i].first_name +
                   " " +
                   obj[i].last_name +
-                  " " +
-                  "<br/>" +
+                  "</b></h4>" +
+                  "<p>" +
                   obj[i].email +
-                  "<br />" +
-                  "<img src=" +
-                  obj[i].dp_url +
-                  ">" +
-                  "<br/>";
-                mainContainer.appendChild(div);
+                  "</p>" +
+                  "</div>" +
+                  "</div>" +
+                  '<div onclick="remover(' +
+                  i +
+                  ');">Delete</div>' +
+                  "</div>" +
+                  "</div>";
+                document.getElementById("myData").appendChild(div);
+                // mainContainer.appendChild(div);
               }
             };
             reader.readAsText(fileUpload.files[0]);
@@ -78,6 +96,8 @@
         return JSON.stringify(result); //JSON
       }
     </script>
+    <p>Yo</p>
+    <script type="text/javascript"></script>
     <input type="file" id="fileUpload" />
     <input type="button" id="upload" value="Upload" onclick="Upload()" />
     <hr />

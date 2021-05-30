@@ -30,30 +30,42 @@ const int N=0;
 
 
 void solve(int test){
-    int n;
-    cin>>n;
-    vector<int> nums(n);
-    vector<int> length(n);
-    int ans=0;
- 
-    for(auto &x:nums)cin>>x;
-    for(int i=0;i<n;i++)
+    int n,m;
+    string s;
+    cin>>n>>m>>s;
+    string t=s;
+    int a = min(n,m);
+    // cout<<a<<ln;
+    for(int i=0;i<a;i++)
     {
-        length[i]=1;
-        for(int j=0;j<i;j++)
+        // cout<<t<<ln;
+        for(int j=1;j<s.length()-1;j++)
         {
-            if(nums[j]<nums[i])
+            if(s[j]=='0' && s[j+1]=='1' && s[j-1]!='1')
             {
-                length[i]=max(length[i],length[j]+1);
-                ans=max(ans,length[i]);
+                t[j]='1';
+                continue;
+            }
+            if(s[j]=='0' && s[j-1]=='1' && s[j+1]!='1')
+            {
+                t[j]='1';
+        
+                continue;
             }
         }
+        if(s[0]=='0' && s[1]=='1')
+        {
+            t[0]='1';
+        }
+        if(s[s.length()-1]=='0' && s[s.length()-2]=='1')
+        {
+            t[n-1]='1';
+        }
+        s=t;
     }
-    for(auto x:length)cout<<x<<" ";cout<<ln;
-    cout<<ans<<ln;
+    cout<<t<<ln;
 }
-    // 6 2 5 1 7 4 8 3
-    // 1 1 2 
+
 
 signed main(){
     ios_base::sync_with_stdio(false);
