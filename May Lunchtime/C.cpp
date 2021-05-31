@@ -48,14 +48,7 @@ isPrime[0] = false;
 return isPrime;
 }
 
-void solve(int test){
-    int n;
-    cin>>n;
-    int count=1;
-    
-    cout<<count<<ln;
-
-}
+vector<bool> primes=segmentedSieve(0,1e7);
 
 
 signed main(){
@@ -71,6 +64,34 @@ signed main(){
     #endif
     int t=1;
     cin>>t;
-    rep(i,1,t+1) solve(i);
+    vector<int> dp(1e7);
+    dp[0]=0;
+    for(int i=1;i<=1e7;i++)
+    {
+        if(primes[i]==1)
+        {
+            dp[i]=dp[i-1]+1;
+        }
+        else
+        dp[i]=dp[i-1];
+    }
+    rep(i,1,t+1){
+        int n;
+        cin>>n;
+        if(n==1)
+        {
+            cout<<1<<ln;
+        }
+        else if(n==2)
+        {
+            cout<<1<<ln;
+        }
+        else if(n==3)
+        {
+            cout<<2<<ln;
+        }
+        else
+        cout<<1+dp[n]-dp[n/2]<<ln;
+    }
     return 0;
 }
