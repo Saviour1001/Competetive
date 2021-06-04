@@ -16,8 +16,8 @@ using namespace std;
 #define mem0(a)           memset(a,0,sizeof(a))
 #define ppc               __builtin_popcount
 #define ppcll             __builtin_popcountll
-#define deb(x) cout << #x << " " << x;
 #define ln "\n"
+#define deb(x) cout << #x << " " << x<<ln;
 
 
 template<typename T1,typename T2>istream& operator>>(istream& in,pair<T1,T2> &a){in>>a.fr>>a.sc;return in;}
@@ -30,9 +30,12 @@ const int32_t MM=998244353;
 const int N=0;
 
 
-
 void solve(int test){
-
+    int a,b,A,B;
+    cin>>a>>b>>A>>B;
+    int count=0;
+    count=A/a+B/b;
+    cout<<count<<ln;
 }
 
 

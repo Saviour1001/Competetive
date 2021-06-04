@@ -1,0 +1,1 @@
+{"name":"Local: B","url":"h:\\Competetive\\June Long Challenge\\B.cpp","tests":[{"id":1622799399784,"input":"3\n2 1 1 1\n3 2 1 1\n5 2 1 2","output":""},{"id":1622801377633,"input":"1\n11 3 1 1","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"h:\\Competetive\\June Long Challenge\\B.cpp","group":"local","local":true}
