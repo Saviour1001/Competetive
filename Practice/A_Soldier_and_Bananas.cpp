@@ -30,13 +30,7 @@ const int32_t MM=998244353;
 const int N=0;
 
 
-void solve(int test){
-    string s;
-    cin>>s;
-    int count=0;
-    count+=s.length();
-    
-}
+void solve(int test){}
 
 
 signed main(){
@@ -51,7 +45,12 @@ signed main(){
     init();
     #endif
     int t=1;
-    cin>>t;
-    rep(i,1,t+1) solve(i);
+    int n,w,k;
+    cin>>k>>n>>w;
+    int a=k*w*(w+1)/2;
+    if(a>n)
+    cout<<abs(n-a)<<ln;
+    else
+    cout<<0<<ln;
     return 0;
 }

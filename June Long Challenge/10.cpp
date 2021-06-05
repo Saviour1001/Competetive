@@ -29,13 +29,31 @@ const int32_t M=1e9+7;
 const int32_t MM=998244353;
 const int N=0;
 
-
-void solve(int test){
-    string s;
-    cin>>s;
+int countDuplicate(vector<int> numbers) {
+    map<int,int> a;
+    for(int i=0;i<numbers.size();i++)
+    {
+        a[numbers[i]]++;
+    }
     int count=0;
-    count+=s.length();
-    
+    for(auto x:a)
+    {
+        cout<<x.first<<" "<<x.second<< ln;
+        if(x.second>1)
+        {
+            count++;
+        }
+    }
+    return count;
+}
+void solve(int test){
+    int temp;
+    vector<int> ans;
+    while(cin>>temp)
+    {
+        ans.push_back(temp);
+    }
+    cout<<countDuplicate(ans);
 }
 
 

@@ -31,11 +31,33 @@ const int N=0;
 
 
 void solve(int test){
-    string s;
-    cin>>s;
-    int count=0;
-    count+=s.length();
-    
+    int n;
+    cin>>n;
+    vector<int> nums(n);
+    int wo=0;int we=0;
+    for(auto &x:nums)cin>>x;
+    for(int i=0;i<n;i++)
+    {
+        if(i%2==1 && nums[i]%2==0)
+        {
+            wo++;
+        }
+        if(i%2==0 && nums[i]%2==1)
+        {
+            we++;
+        }
+    }
+    // deb(we)
+    // deb(wo)
+    if(we!=wo)
+    {
+        cout<<"-1\n";
+    }
+    else
+    {
+        cout<<wo<<ln;
+    }
+
 }
 
 

@@ -44,10 +44,6 @@ void solve(int test){
     pos=0;
     for(int i=1;i<n;i++)
     {
-        if(trains[i]==1)
-        {
-            pos=i;
-        }
         if(pos>=0)
         {
             ones[i]=i-pos;
@@ -56,16 +52,18 @@ void solve(int test){
         {
             ones[i]=0;
         }
+        if(trains[i]==1)
+        {
+            pos=i;
+            continue;
+        }
+        
     }
     int pos2=-1;
     if(trains[n-1]==2)
     pos2=n-1;
-    for(int i=1;i<n;i++)
+    for(int i=n-2;i>0;i--)
     {
-        if(trains[i]==2)
-        {
-            pos2=i;
-        }
         if(pos2>=0)
         {
             twos[i]=pos2-i;
@@ -74,10 +72,16 @@ void solve(int test){
         {
             twos[i]=0;
         }
+        if(trains[i]==2)
+        {
+            pos2=i;
+            continue;
+        }
+        
     }
     
-    for(auto x:ones)cout<<x<<" ";cout<<ln;
-    for(auto x:twos)cout<<x<<" ";cout<<ln;
+    // for(auto x:ones)cout<<x<<" ";cout<<ln;
+    // for(auto x:twos)cout<<x<<" ";cout<<ln;
     vector<int> ans(n);
     for(int i=0;i<n;i++)
     {
@@ -94,21 +98,20 @@ void solve(int test){
             ans[i]=min(ones[i],twos[i]);
         }
     }
-    for(auto x:ans)cout<<x<<" ";cout<<ln;
-    // for(int i=0;i<m;i++)
-    // {
-    //     if(pass[i]==1)
-    //     {
-    //         cout<<"0 ";
-    //         continue;
-
-    //     }
-    //     if(ans[pass[i]-1]==0)
-    //     cout<<"-1 ";
-    //     else
-    //     cout<<ans[pass[i]-1]<<" ";
-    // }
-    // cout<<ln;
+    // for(auto x:ans)cout<<x<<" ";cout<<ln;
+    for(int i=0;i<m;i++)
+    {
+        if(pass[i]==1)
+        {
+            cout<<"0 ";
+            continue;
+        }
+        if(ans[pass[i]-1]==0)
+        cout<<"-1 ";
+        else
+        cout<<ans[pass[i]-1]<<" ";
+    }
+    cout<<ln;
 
 }
 

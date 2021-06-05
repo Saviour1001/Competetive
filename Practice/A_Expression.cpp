@@ -30,13 +30,7 @@ const int32_t MM=998244353;
 const int N=0;
 
 
-void solve(int test){
-    string s;
-    cin>>s;
-    int count=0;
-    count+=s.length();
-    
-}
+void solve(int test){}
 
 
 signed main(){
@@ -50,8 +44,9 @@ signed main(){
     #ifdef NCR
     init();
     #endif
-    int t=1;
-    cin>>t;
-    rep(i,1,t+1) solve(i);
+    int a,b,c;
+    cin>>a>>b>>c;
+    int ans=max({(a+b)*c,a*b*c,a*(b+c),a+b+c});
+    cout<<ans<<ln;
     return 0;
 }

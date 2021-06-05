@@ -30,13 +30,7 @@ const int32_t MM=998244353;
 const int N=0;
 
 
-void solve(int test){
-    string s;
-    cin>>s;
-    int count=0;
-    count+=s.length();
-    
-}
+void solve(int test){}
 
 
 signed main(){
@@ -50,8 +44,14 @@ signed main(){
     #ifdef NCR
     init();
     #endif
-    int t=1;
-    cin>>t;
-    rep(i,1,t+1) solve(i);
+    int a,b,c;
+    cin>>a>>b>>c;
+    int d[3];
+    d[0]=abs(a-b);
+    d[1]=abs(a-c);
+    d[2]=abs(c-b);
+    // cout<<d[0]<<" "<<d[1]<<" "<<d[2]<<ln;
+    // cout<<d[0]+d[1]<<" "<<d[1]+d[2]<<" "<<d[2]+d[1]<<ln;
+    cout<<min({d[0]+d[1],d[1]+d[2],d[2]+d[0]});
     return 0;
 }

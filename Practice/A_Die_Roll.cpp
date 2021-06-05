@@ -30,13 +30,7 @@ const int32_t MM=998244353;
 const int N=0;
 
 
-void solve(int test){
-    string s;
-    cin>>s;
-    int count=0;
-    count+=s.length();
-    
-}
+void solve(int test){}
 
 
 signed main(){
@@ -51,7 +45,28 @@ signed main(){
     init();
     #endif
     int t=1;
-    cin>>t;
-    rep(i,1,t+1) solve(i);
+    float a,b;
+    cin>>a>>b;
+    float x=max(a,b);
+    float s=0;
+    for(int i=x;i<=6;i++)
+    {
+        s++;
+    }      
+    // cout<<s<<ln;
+    if(s==1)
+    cout<<"1/6"; 
+    if(s==2)
+    cout<<"1/3";
+    if(s==3)
+    cout<<"1/2";
+    if(s==4)
+    cout<<"2/3";
+    if(s==5)
+    cout<<"5/6";
+    if(s==6)
+    cout<<"1/1";                                        
+    if(s==0)
+    cout<<"0/6";
     return 0;
 }

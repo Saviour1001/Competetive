@@ -29,13 +29,35 @@ const int32_t M=1e9+7;
 const int32_t MM=998244353;
 const int N=0;
 
+long long power(long long a, long long b,int MOD=M) {
+    long long res = 1;
+    while (b > 0) {
+        if (b & 1)
+            res = res * a % MOD;
+        a = a * a % MOD;
+        b >>= 1;
+    }
+    return res;
+}
 
 void solve(int test){
-    string s;
-    cin>>s;
-    int count=0;
-    count+=s.length();
-    
+    int n;
+    cin>>n;
+    // int digits=floor(log10(n)+1);
+    // cout<<digits<<ln;
+    int i=0;
+    vector<int> nums;
+    while(n)
+    {
+        int last=n%10;
+        if(last!=0)
+        nums.push_back(last*power(10,i));
+        i++;
+        n=n/10;
+    }
+    cout<<nums.size()<<ln;
+    for(auto x:nums)cout<<x<<" ";
+    cout<<ln;
 }
 
 

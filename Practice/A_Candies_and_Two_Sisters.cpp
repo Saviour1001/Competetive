@@ -31,11 +31,20 @@ const int N=0;
 
 
 void solve(int test){
-    string s;
-    cin>>s;
-    int count=0;
-    count+=s.length();
-    
+    int n;
+    cin>>n;
+    if(n<=2)cout<<0<<ln;
+    else
+    {
+        if(n%2==1)
+        {
+            cout<<n-(n+1)/2<<ln;
+        }
+        else
+        {
+            cout<<n-(n+1)/2-1<<ln;
+        }
+    }
 }
 
 

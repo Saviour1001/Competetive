@@ -31,11 +31,18 @@ const int N=0;
 
 
 void solve(int test){
-    string s;
-    cin>>s;
-    int count=0;
-    count+=s.length();
-    
+    int a,b;
+    cin>>a>>b;
+    int q=a/b;
+    if(a%b)
+    {
+        cout<<(q+1)*b-a;
+    }
+    else
+    {
+        cout<<q*b-a;
+    }
+    cout<<ln;
 }
 
 

@@ -29,14 +29,29 @@ const int32_t M=1e9+7;
 const int32_t MM=998244353;
 const int N=0;
 
-
-void solve(int test){
-    string s;
-    cin>>s;
-    int count=0;
-    count+=s.length();
-    
+vector<bool> segmentedSieve(long long L, long long R) {      //Generates primes between L,R             
+ long long lim = sqrt(R);
+ vector<bool> mark(lim + 1, false);
+vector<long long> primes;
+ for (long long i = 2; i <= lim; ++i) {
+ if (!mark[i]) {
+ primes.emplace_back(i);
+for (long long j = i * i; j <= lim; j += i)
+mark[j] = true;
 }
+}
+vector<bool> isPrime(R - L + 1, true);
+for (long long i : primes)
+for (long long j = max(i * i, (L + i - 1) / i * i); j <= R; j += i)
+isPrime[j - L] = false;
+if (L == 1)
+isPrime[0] = false;
+return isPrime;
+}
+
+vector<bool> primes=segmentedSieve(0,1e6);
+
+// void solve(test){}
 
 
 signed main(){
@@ -50,8 +65,17 @@ signed main(){
     #ifdef NCR
     init();
     #endif
-    int t=1;
-    cin>>t;
-    rep(i,1,t+1) solve(i);
+    int n;
+    cin>>n;
+    int a=n/3;
+    int b=n-a;
+    start:
+    if(primes[a] || primes[b])
+    {
+        a++;
+        b=n-a;
+        goto start;
+    }
+    cout<<a<<" "<<b;
     return 0;
 }

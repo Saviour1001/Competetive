@@ -30,13 +30,7 @@ const int32_t MM=998244353;
 const int N=0;
 
 
-void solve(int test){
-    string s;
-    cin>>s;
-    int count=0;
-    count+=s.length();
-    
-}
+void solve(int test){}
 
 
 signed main(){
@@ -50,8 +44,20 @@ signed main(){
     #ifdef NCR
     init();
     #endif
-    int t=1;
-    cin>>t;
-    rep(i,1,t+1) solve(i);
+    int arr[4];
+    int sum=0;
+    for(int i=0;i<4;i++)
+    {
+        cin>>arr[i];
+        sum+=arr[i];
+    }
+    sum/=3;
+    for(int i=0;i<4;i++)
+    {
+        if(sum!=arr[i])
+        {
+            cout<<abs(sum-arr[i])<<" ";
+        }
+    }
     return 0;
 }

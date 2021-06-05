@@ -31,7 +31,22 @@ const int N=0;
 
 
 void solve(int test){
-    
+    string s;
+    cin>>s;
+    int x[2]={-1,-1};
+
+    int ans=0;
+    int n=sz(s);
+    rep(i,0,n){
+        int c= s[i]-'0';
+        if(c==0 || c==1)
+        {
+            x[c^(i%2)]=i;
+        }
+        int mn=min(x[0],x[1]);
+        ans+=i-mn; 
+    }
+    cout<<ans<<ln;
 }
 
 
@@ -53,14 +68,14 @@ signed main(){
 }
 
 
-    0  0 0 0  0 1 1 1 1 0
+//     0  0 0 0  0 1 1 1 1 0
 
-mods 0 1 0 1 0
-     1 1 0 1 1 
+// mods 0 1 0 1 0
+//      1 1 0 1 1 
 
-x    1 0 0 0 1
-mn= -1 0 0 0 3
-ans= 1 1 2 3 1
+// x    1 0 0 0 1
+// mn= -1 0 0 0 3
+// ans= 1 1 2 3 1
     
 
 

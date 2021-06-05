@@ -30,13 +30,7 @@ const int32_t MM=998244353;
 const int N=0;
 
 
-void solve(int test){
-    string s;
-    cin>>s;
-    int count=0;
-    count+=s.length();
-    
-}
+void solve(int test){}
 
 
 signed main(){
@@ -50,8 +44,15 @@ signed main(){
     #ifdef NCR
     init();
     #endif
-    int t=1;
-    cin>>t;
-    rep(i,1,t+1) solve(i);
+    int N, M;                              
+    int sum=0,a=0;
+ 
+   	cin>>N>>M; //represents N rows and M columns
+   	    a=N/2; //The number of tarot cards that can be placed in a column  
+         sum = a * M; // multiply by the total number of columns
+         if (N% 2 == 1) //if odd lines
+         sum += M / 2; //Add the number of cards in this row
+         cout<<sum<<ln;
+
     return 0;
 }
