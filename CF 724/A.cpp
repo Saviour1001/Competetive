@@ -34,8 +34,10 @@ void solve(int test){
     int n;
     cin>>n;
     vector<int> nums(n);
+
     int k=0;
     for(auto &x:nums)cin>>x;
+    
     vector<int> diff;
     diff.push_back(0);
     start:
