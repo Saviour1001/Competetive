@@ -49,6 +49,7 @@ void solve(int test){
         {
             continue;
         }
+        
         int big=max(prev,x);
         int small = min(prev,x);
         s.insert(x);
