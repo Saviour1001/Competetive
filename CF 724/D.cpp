@@ -29,49 +29,38 @@ const int32_t M=1e9+7;
 const int32_t MM=998244353;
 const int N=0;
 
+
 void solve(int test){
     int n;
     cin>>n;
     vector<int> nums(n);
-
-    int k=0;
-    for(auto &x:nums)cin>>x;
-    
-    vector<int> diff;
-    diff.push_back(0);
-    start:
-    // for(auto x:nums)cout<<x<<" ";cout<<ln;
-    diff.clear();
-    for(int i=0;i<nums.size();i++)
+    for(int &x:nums)cin>>x;
+    set<int> s;
+    int prev;
+    for(int x:nums)
     {
-        for(int j=i+1;j<nums.size();j++)
+        if(s.empty())
         {
-            int temp=abs(nums[i]-nums[j]);
-            diff.push_back(temp);
+            s.insert(x);
+            prev=x;
+            continue;
         }
-    }
-    sort(all(nums));
-    // for(auto x:diff)cout<<x<<" ";cout<<ln;
-    bool flag=true;
-    for(int i=0;i<diff.size();i++)
-    {
-        if(binary_search(all(nums),diff[i])==0)
+        if(x==prev)
         {
-            flag=false;
-            nums.push_back(diff[i]);
-            k++;
-            break;
+            continue;
         }
+        int big=max(prev,x);
+        int small = min(prev,x);
+        s.insert(x);
+        if(*s.upper_bound(small)!=big)
+        {
+            // for(auto y:s)cout<<y<<" ";
+            cout<<"NO\n";
+            return ;
+        }
+        prev=x;
     }
-    if(flag==false && k<100)goto start;
-    if(flag==false)cout<<"NO\n";
-    else
-    {
-        cout<<"YES\n";
-        cout<<nums.size()<<ln;
-        for(auto x:nums)cout<<x<<" ";
-        cout<<ln;
-    }
+    cout<<"YES\n";
 }
 
 

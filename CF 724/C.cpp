@@ -29,49 +29,30 @@ const int32_t M=1e9+7;
 const int32_t MM=998244353;
 const int N=0;
 
+
 void solve(int test){
+    map<pii,int> freq;
     int n;
     cin>>n;
-    vector<int> nums(n);
-
-    int k=0;
-    for(auto &x:nums)cin>>x;
-    
-    vector<int> diff;
-    diff.push_back(0);
-    start:
-    // for(auto x:nums)cout<<x<<" ";cout<<ln;
-    diff.clear();
-    for(int i=0;i<nums.size();i++)
+    string s;
+    cin>>s;
+    int k=0;int d=0;
+    for(char b:s)
     {
-        for(int j=i+1;j<nums.size();j++)
-        {
-            int temp=abs(nums[i]-nums[j]);
-            diff.push_back(temp);
-        }
+        if(b=='K')k++;
+        if(b=='D')d++;
+        int x = k;int y = d;
+        int a = __gcd(x,y);
+        x/=a;
+        y/=a;
+        freq[{x,y}]++;
+        // cout<<freq[{x,y}]<<" ";
     }
-    sort(all(nums));
-    // for(auto x:diff)cout<<x<<" ";cout<<ln;
-    bool flag=true;
-    for(int i=0;i<diff.size();i++)
+    for(auto x:freq)
     {
-        if(binary_search(all(nums),diff[i])==0)
-        {
-            flag=false;
-            nums.push_back(diff[i]);
-            k++;
-            break;
-        }
+        cout<<x.first<<" "<<x.second<<" "<<ln;
     }
-    if(flag==false && k<100)goto start;
-    if(flag==false)cout<<"NO\n";
-    else
-    {
-        cout<<"YES\n";
-        cout<<nums.size()<<ln;
-        for(auto x:nums)cout<<x<<" ";
-        cout<<ln;
-    }
+    cout<<ln;
 }
 
 

@@ -29,48 +29,43 @@ const int32_t M=1e9+7;
 const int32_t MM=998244353;
 const int N=0;
 
-void solve(int test){
-    int n;
-    cin>>n;
-    vector<int> nums(n);
+long long power(long long a, long long b,int MOD=M) {
+    long long res = 1;
+    while (b > 0) {
+        if (b & 1)
+            res = res * a % MOD;
+        a = a * a % MOD;
+        b >>= 1;
+    }
+    return res;
+}
 
-    int k=0;
-    for(auto &x:nums)cin>>x;
-    
-    vector<int> diff;
-    diff.push_back(0);
-    start:
-    // for(auto x:nums)cout<<x<<" ";cout<<ln;
-    diff.clear();
-    for(int i=0;i<nums.size();i++)
+
+void solve(int test){
+    int n;string s;
+    cin>>n>>s;
+    rep(length,1,4)
     {
-        for(int j=i+1;j<nums.size();j++)
+        int num = power(26,length);
+        rep(mask,0,num)
         {
-            int temp=abs(nums[i]-nums[j]);
-            diff.push_back(temp);
+            string t;
+            int temp= mask;
+            rep(j,0,length)
+            {
+                int d = temp%26;
+                t.push_back('a'+d);
+                temp = temp/26;
+            }
+        
+            reverse(all(t));
+            // cout<<t<<ln;
+            if(s.find(t)==-1)
+            {
+                cout<<t<<ln;
+                return;
+            }
         }
-    }
-    sort(all(nums));
-    // for(auto x:diff)cout<<x<<" ";cout<<ln;
-    bool flag=true;
-    for(int i=0;i<diff.size();i++)
-    {
-        if(binary_search(all(nums),diff[i])==0)
-        {
-            flag=false;
-            nums.push_back(diff[i]);
-            k++;
-            break;
-        }
-    }
-    if(flag==false && k<100)goto start;
-    if(flag==false)cout<<"NO\n";
-    else
-    {
-        cout<<"YES\n";
-        cout<<nums.size()<<ln;
-        for(auto x:nums)cout<<x<<" ";
-        cout<<ln;
     }
 }
 
